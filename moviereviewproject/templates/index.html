@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div style="text-align:right">
+                <a href="{% url 'movieapp:registration' %}" class="btn btn-primary">New User</a>
+                <a href="{% url 'movieapp:login' %}" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <form class="d-flex" action="{% url 'movieapp:SearchResult' %}" method="get">
+                {% csrf_token %}
+                <input class="form-control me-2" type="search" placeholder="Search" name="q" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+    </div>
+       <div>
+           <div>
+     <div class="row">
+        {% for i in movie_list %}
+            <div class="col-md-3">
+                <div class="card">
+
+                    <img src="{{i.poster.url}}" class="card-img-top" alt="" height="250">
+                    <div class="card-body" style="height: 200px;">
+                        <h5 class="card-title">{{i.title}}</h5>
+                        <p class="card-text">Category:{{i.category}}</p>
+                        <p class="card-text">Release Date:{{i.release_date}}</p>
+                        <a href="{% url 'addmovieapp:detail' i.id %}" class="btn btn-warning">Get Details</a>
+                         {% if movie.review %}
+                            <p class="card-text">Rating: {{ movie.review.rating }}</p>
+                            <p class="card-text">Review: {{ movie.review.review_text }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+             </div>
+           </div>
+</div>
+{% endblock %}

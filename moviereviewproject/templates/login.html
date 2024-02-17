@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body style="background-color: white;">
+<a href="{% url 'addmovieapp:index' %}" class="btn btn-secondary">Home</a>
+
+<div style="text-align: center;">
+    <h1>LOGIN</h1>
+
+    <div>
+        <label for="id_username">Username:</label>
+        <input type="text" id="id_username" name="username" placeholder="Enter your UserName">
+    </div>
+
+    <div>
+        <label for="id_password">Password:</label>
+        <input type="password" id="id_password" name="password" placeholder="Enter your password">
+    </div>
+
+    <div>
+        <a href="{% url 'addmovieapp:users' %}" class="btn btn-primary">Login</a>
+    </div>
+</div>
+<div>
+</div>
+
+</body>
+{% endblock %}
