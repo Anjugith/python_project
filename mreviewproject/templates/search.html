@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div>
+    <p class="text-center my_search_text">You have searched for: <b>{{ query }}</b></p>
+</div>
+
+{% if movies %}
+    <div class="container">
+        <div class="row">
+            {% for movie in movies %}
+             <div class="col-md-4">
+            <img src="{{movie.poster.url}}" width="300",height="300"><br>
+        </div>
+        <div class="col-md-7">
+            <h2>{{movie.title}}</h2>
+            <h5>Description</h5>
+            <h6>{{movie.desc}}</h6>
+            <h6>Release Date:{{movie.release_date}}</h6>
+            <h6>Actors:{{movie.actors}}</h6>
+             <h6>Category:{{movie.category}}</h6>
+            <h5>Trailer_link</h5>
+            <a href="{{ movie.trailer_link }}" target="_blank">{{ movie.trailer_link }}</a>
+<!--                <div class="my_bottom_margin col-9 col-sm-12 col-md-4 col-lg-4">-->
+<!--                    <div class="card text-center" style="min-width:18em;">-->
+<!--                        <a href="{{ movie.get_url }}"><img class="card_img-top my_image" src="{{ movie.poster.url }}" alt="{{ movie.title }}"></a>-->
+<!--                        <div class="card-body">-->
+<!--                            <h4>{{ movie.title }}</h4>-->
+<!--                            <p>{{ movie.desc }}</p>-->
+                        </div>
+<!--                    </div>-->
+<!--                </div>-->
+            {% endfor %}
+        </div>
+    </div>
+{% else %}
+    <div class="row mx-auto">
+        <p class="text-center my_search_text">No results found</p>
+    </div>
+{% endif %}
+
+{% endblock %}

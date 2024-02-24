@@ -1,0 +1,14 @@
+<!-- movie_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ movie.title }}</h2>
+  <p>{{ movie.desc }}</p>
+  <p>Release Date: {{ movie.release_date }}</p>
+  <p>Actors: {{ movie.actors }}</p>
+  <p>Category: {{ movie.category.name }}</p>
+  <p>Trailer: <a href="{{ movie.trailer_link }}" target="_blank">Watch Trailer</a></p>
+
+  <!-- Add comments section if needed -->
+
+{% endblock %}
